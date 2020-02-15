@@ -270,6 +270,12 @@ class _TableCalendarState extends State<TableCalendar>
     }
   }
 
+  void _selectPreviousOnSwipe() {
+    setState(() {
+      widget.calendarController._selectPrevious();
+    });
+  }
+
   void _selectPrevious() {
     if (widget.onPreviousSelected != null) {
       widget.onPreviousSelected();
@@ -278,6 +284,12 @@ class _TableCalendarState extends State<TableCalendar>
         widget.calendarController._selectPrevious();
       });
     }
+  }
+
+  void _selectNextOnSwipe() {
+    setState(() {
+      widget.calendarController._selectNext();
+    });
   }
 
   void _selectNext() {
@@ -313,10 +325,10 @@ class _TableCalendarState extends State<TableCalendar>
   void _onHorizontalSwipe(DismissDirection direction) {
     if (direction == DismissDirection.startToEnd) {
       // Swipe right
-      _selectPrevious();
+      _selectPreviousOnSwipe();
     } else {
       // Swipe left
-      _selectNext();
+      _selectNextOnSwipe();
     }
   }
 
